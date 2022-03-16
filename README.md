@@ -103,6 +103,8 @@ provider "aws" {
 - The default configuration is set for the provider if no alias is mentioned. 
 - When referring to the provider configuration, the reference will be in the form `<PROVIDER NAME>.<ALIAS>, for example in the above snippet we would refer to the provider config for us-west-2 as `aws.west`.
 
+![Terraform Providers](./images/tf_providers.png)
+
 ## Terraform CLI Commands
 - `terraform fmt [options] [DIR]` used to rewrite Terraform configuration files to a canonical format and style.
     - Command line flags for `terraform fmt`:
@@ -143,6 +145,8 @@ provider "aws" {
     - Postgres
     - Remote
     - S3
+
+![Terraform Workspaces](./images/tf_workspaces.png)
 
 ###### Using Workspaces 
 - Terraform starts with the default workspace, which can never be deleted.
