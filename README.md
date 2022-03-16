@@ -1,8 +1,6 @@
 # Terraform Certification 
 - [Link](https://learn.hashicorp.com/tutorials/terraform/associate-review?in=terraform/certification) to HashiCorp Official Exam Prep Material
 
-- Terraform cloud
-
 ### What is Terraform?
 - A tool used to define infrastructure in human and machine-readable code. 
 
