@@ -43,6 +43,8 @@
         - Terraform configurations files are declarative, meaning they describe the end state of your infrastructure. Terraform builds a resource graph to determine resource dependencies and creates or modifies non – dependent resources in parallel, allowing terraform to provision resources efficiently.
     - Standardizes Configurations
         - Terraform supports reusable configuration components called modules that define configurable collections of infrastructure, saving time and encouraging best practices. You can use publicly available modules from the terraform registry. 
+    
+- Terraform is Cloud-Agnostic meaning it uses a single configuration to be used to manage multiple providers and handle cross-cloud dependencies. It simplifies management and orchestration, helping operators build large-scale multi-cloud infrastructures. 
 
 ## Use-Cases: 
 - Multi-Cloud Deployment
