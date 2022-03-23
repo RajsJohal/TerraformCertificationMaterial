@@ -56,6 +56,10 @@
     - Terraform allows you to deploy a Kubernetes cluster and manage its resources.
 
 
+## Terraform Code Example
+
+![TF Code Snippet](./images/tf_code_snippet.png)
+
 ## Terraform State
 - State acts as a sort of database to map Terraform config to the real world.
 - Terraform is responsible for creating objects and recording their identities in the state. 
@@ -150,11 +154,11 @@ provider "aws" {
 
 ###### Using Workspaces 
 - Terraform starts with the default workspace, which can never be deleted.
-- Mangaged by the `terraform workspace` command, to create a new workspace `terraform workspace new` and run `terraform workspace select new` to switch to the new workspace.  
+- Mangaged by the `terraform workspace` command, to create a new workspace `terraform workspace new <WORKSPACE-NAME>` and run `terraform workspace select <WORKSPACE-NAME>` to switch to the new workspace.  
 - When running `terraform plan`, Terraform will be unbale to see existing resources that existed in the default workspace, the resources still exist but are managed in another workspace. 
 
 ###### Current Workspace Interpolation
-- You can specify the name of the current worspace within the Terraform configuration using `${terraform.workspace}` interpolation sequence. This is useful for chaning behavior based on the workspace. 
+- You can specify the name of the current worspace within the Terraform configuration using `${terraform.workspace}` interpolation sequence. This is useful for changing behavior based on the workspace. 
 
 ###### When to use Multiple Workspaces
 - Common use of multiple workspaces is to create a parallel, distinct copy of a set of infrastructure in order to test a set of changes before modifying the main production infrastructure. For example, a developer working on a complex set of infrastructure changes might create a new temporary workspace in order to freely experiment with changes without afecting the default workspace. 
@@ -471,3 +475,50 @@ terraform {
     - Meta-Arguments section documents special arguments that can be used with every resource type, including `depends_on`, `count`, `for_each`, `provider`, and `lifecycle`.
     - Provisions documents configuring post-creation actions for a resource using the provisioner and connection blocks. Since provisioners are non-declarative and potentially unpredictable.
 
+## Terraform Cloud & Enterprise
+
+### Hasicorp Sentinel (Policy as Code Framework)
+- Enforces policies on your code
+- Uses Sentinel Language -  Human Readable
+
+- Benefits:
+    - Sandboxing - Guardrails for automation
+    - Version Control
+    - Testing and Automation
+- Use-Cases:
+    - Enforcing CIS standards
+    - Check to make sure only t3.micro instance types are being used
+    - Ensuring security groups do not allow all tarffic on port 22
+
+![TF Sentinel Example](./images/tf_sentinel.png)
+
+
+### Terraform Vault Provider
+- Secrets management software
+- Dynamically provisions credntials and rotates them
+- Encrypts sensitive data in transit and at rest ad provides fine-grained access to secrets using ACLs
+
+![Vault Provider](./images/tf_vault_provider.png)
+
+- Benefits:
+    - Developers don't need to manage long-lived credentials
+    - Inject secrets into your Terraform deployment at runtime
+    - Fine-grained ACLs for access to temporary credentials
+
+### Terraform Registry
+- A repository of publicly available Terraform providers and modules
+- You can publish and share your own modules 
+- Collaboration with other contributors to make changes to providers and modules
+- Can be directly refernced in your Terraform code
+
+### Terraform Cloud Workspace
+- Directories hosted in Terraform Cloud
+- Stores old version of state files by default
+- Maintains a record of all execution activity 
+- All Terraform commands executed on "managed" Terraform Cloud VM's
+
+- Terraform OSS Workspace:
+    - Stores alternate state files in same working directory
+
+#### Terraform OSS Workspace vs Terraform Cloud Workspaces
+![TF OSS VS TF CLOUD](./images/tf_oss_vs_cloud.png)
